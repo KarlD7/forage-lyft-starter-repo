@@ -1,6 +1,6 @@
-from battery import Battery
+from battery.battery import Battery
 
-from dateutil.relativedelta import relativedelta
+from helpers import subtract_years_from_date
 
 class SpindlerBattery(Battery):
     def __init__(self, last_service_date, current_date):
@@ -8,7 +8,7 @@ class SpindlerBattery(Battery):
         self.current_date = current_date
 
     def needs_service(self):
-        year_difference = relativedelta(current_date, last_service_date).years
-        if year_difference > 2:
+        new_date = subtract_years_from_date(self.current_date, 2)
+        if new_date > self.last_service_date:
             return True
         return False

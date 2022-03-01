@@ -1,7 +1,4 @@
-from car import Car
-
-import sys
-sys.path.append("..")
+from car.car import Car
 
 from engine.capulet_engine import CapuletEngine
 from engine.willoughby_engine import WilloughbyEngine

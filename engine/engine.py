@@ -1,4 +1,4 @@
-from ..serviceable import Serviceable
+from serviceable import Serviceable
 
 class Engine(Serviceable):
     def __init__(self):

@@ -1,6 +1,6 @@
-from battery import Battery
+from battery.battery import Battery
 
-from dateutil.relativedelta import relativedelta
+from helpers import subtract_years_from_date
 
 class NubbinBattery(Battery):
     def __init__(self, last_service_date, current_date):
@@ -8,7 +8,7 @@ class NubbinBattery(Battery):
         self.current_date = current_date
 
     def needs_service(self):
-        year_difference = relativedelta(current_date, last_service_date).years
-        if year_difference > 4:
+        new_date = subtract_years_from_date(self.current_date, 4)
+        if new_date > self.last_service_date:
             return True
         return False
